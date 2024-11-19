@@ -1,0 +1,24 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Build the Docker image
+      run: docker build . -t Barthez-react-App
+
+    - name: Connect to docker registry
+      run: echo "dckr_pat_L7Qa4vdtr9q-rgx6EfGOwFtfcLQ" | docker login -u 01barthez
+
+    - name: "Push to Docker Hub"
+      run: docker push 01barthez/Barthez-react-App
