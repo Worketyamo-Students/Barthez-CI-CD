@@ -14,10 +14,10 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Build the Docker image
-      run: docker build . -t Barthez-react-App
+      run: docker build . -t barthez-react-app
 
     - name: Connect to docker registry
       run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME}} --password-stdin
 
     - name: "Push to Docker Hub"
-      run: docker push ${{ secrets.DOCKER_USERNAME }}/Barthez-react-App
+      run: docker push ${{ secrets.DOCKER_USERNAME }}/barthez-react-app
