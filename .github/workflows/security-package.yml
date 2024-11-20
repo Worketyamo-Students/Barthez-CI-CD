@@ -1,0 +1,4 @@
+name: Security of package
+on:
+  schedule:
+    - cron: 0 10 21 

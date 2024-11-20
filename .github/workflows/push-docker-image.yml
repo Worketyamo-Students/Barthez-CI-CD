@@ -12,6 +12,12 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16
+        cache: 'yarn'
+        
     - name: Build the Docker image
       run: docker build -t 01barthez/barthez-react-app .
 
