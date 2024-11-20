@@ -1,11 +1,10 @@
-name: Docker Image CI
+name: Push Docker image
 
 on:
   push:
     branches: [ "main" ]
 
 jobs:
-
   build:
 
     runs-on: ubuntu-latest
@@ -18,7 +17,7 @@ jobs:
       run: docker build . -t Barthez-react-App
 
     - name: Connect to docker registry
-      run: echo "dckr_pat_L7Qa4vdtr9q-rgx6EfGOwFtfcLQ" | docker login -u 01barthez
+      run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME}} --password-stdin
 
     - name: "Push to Docker Hub"
-      run: docker push 01barthez/Barthez-react-App
+      run: docker push ${{ secrets.DOCKER_USERNAME }}/Barthez-react-App
